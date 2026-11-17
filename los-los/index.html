@@ -882,7 +882,7 @@
       <div class="wrap hero-grid">
         <div>
           <span class="demo-badge">Демо-макет · не официальный сайт</span>
-          <h1 class="display">Караоке, которое<br>начинается <em>с брони</em></h1>
+          <h1 class="display">Счастье, которое<br>начинается <em>с брони</em></h1>
           <p class="lead">Уютный караоке-гастропаб в Дубне.
             <br>
             Столики на двоих, караоке-зал, банкеты, юбилеи, дни рождения — без нудных звонков и «а вы точно
@@ -903,7 +903,7 @@
 
         <div class="booking-card" id="booking">
           <h2>Бронь стола</h2>
-          <p class="sub">Заявка уйдёт администратору — в рабочей версии</p>
+          <p class="sub">Заявка уйдёт администратору в Telegram - в рабочей версии</p>
           <form id="bookingForm">
             <div class="row-2">
               <div class="field">
@@ -948,8 +948,8 @@
               <input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
             </div>
             <button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку</button>
-            <p class="booking-note">Демо: данные никуда не отправляются. В рабочей версии заявка приходит
-              администратору, а гостю — подтверждение.</p>
+            <p class="booking-note">Демо: данные никуда не отправляются. В рабочей версии заявка приходит в Telegram, а
+              гостю — подтверждение.</p>
           </form>
         </div>
       </div>
@@ -1086,7 +1086,7 @@
           </div>
           <div class="phone-mock">
             <div class="phone-screen">
-              <div class="msg bot">Здравствуйте! Это «Лось Лосось». Хотите забронировать стол или заказать песню?<div
+              <div class="msg bot">Привет! Это бот «Лось Лосось». Вы хотите забронировать стол или заказать песню?<div
                   class="btns">
                   <span>Забронировать стол</span><span>Заказать песню</span><span>Меню</span>
                 </div>
@@ -1159,8 +1159,9 @@
               <div><b><a href="https://vk.com/club217590622" target="_blank" rel="noopener">Наше сообщество «Лось
                     Лосось» ВКонтакте</a></b><span>Новости, меню, объявления фото</span></div>
             </li>
-            <li><span class="ico">▣</span>
-              <div><b>Меню и заказ со стола</b><span>Наведите камеру на QR на столе — откроется меню вашего стола</span></div>
+            <li><span class="ico">TG</span>
+              <div><b><a href="#bot" id="botLink">Наш бот «ЛОСЬ ЛОСОСЬ» в Telegram</a></b><span>Тут будет ссылка
+                  на вашего будущего бота записи и новостей заведения</span></div>
             </li>
           </ul>
         </div>
@@ -1186,13 +1187,13 @@
     </div>
   </footer>
 
-  <div class="toast" id="toast">Это демо-макет. В рабочей версии заявка уходит администратору.</div>
+  <div class="toast" id="toast">Это демо. Здесь будет ссылка на вашего бота записи и новостей заведения.</div>
 
   <div class="modal-backdrop" id="modal">
     <div class="modal">
       <span class="demo-badge">Демо</span>
       <h3>Заявка сформирована</h3>
-      <p>В рабочей версии она уйдёт администратору, а гостю придёт подтверждение. Вот что увидит
+      <p>В рабочей версии она уйдёт администратору в Telegram, а гостю придёт подтверждение. Вот что увидит
         администратор:</p>
       <div class="summary" id="summary"></div>
       <div class="modal-actions">
@@ -1276,6 +1277,7 @@
     });
 
     // Пояснения в демо
+    const botLink = document.getElementById('botLink');
     const toast = document.getElementById('toast');
     let toastTimer;
     function showToast(message) {
@@ -1298,6 +1300,11 @@
       showToast(`Добавлено к брони: ${addons.join(', ')}`);
     });
 
+    // Telegram-бот: в демо ссылка показывает пояснение, в рабочей версии ведёт на бота
+    botLink.addEventListener('click', e => {
+      e.preventDefault();
+      showToast('Это демо. Здесь будет ссылка на вашего бота записи и новостей заведения.');
+    });
   </script>
 </body>
 
