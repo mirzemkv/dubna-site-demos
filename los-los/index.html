@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лось Лосось — караоке-бар в Дубне | ДЕМО-МАКЕТ </title>
+  <meta name="description"
+    content="Демо-макет сайта караоке-гастропаба «Лось Лосось»: бронирование столов, караоке-зал, меню и очередь песен.">
+  <style>
+    :root {
+      --bg: #12100b;
+      --surface: #1b1812;
+      --surface-2: #241f16;
+      --line: #3a3325;
+      --text: #f7f1e4;
+      --muted: #b8ad9a;
+      --amber: #e3b64a;
+      --amber-2: #f0cb6d;
+      --moss: #a7b78b;
+      --danger: #d9826a;
+      --radius: 18px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto
+    }
+
+    .display {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -.02em
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--amber)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #1b1507
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-2);
+      transform: translateY(-1px)
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--text)
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber)
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(227, 182, 74, .4);
+      background: rgba(227, 182, 74, .08);
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(18, 16, 11, .86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 86px;
+      gap: 20px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      font-size: 14px
+    }
+
+    .logo-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex: none;
+      mix-blend-mode: screen;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .nav-links a:hover {
+      color: var(--text)
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 0 60px
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 120%;
+      background:
+        radial-gradient(60% 50% at 20% 20%, rgba(227, 182, 74, .16), transparent 70%),
+        radial-gradient(45% 45% at 85% 30%, rgba(167, 183, 139, .14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 46px;
+      align-items: start
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: .98;
+      margin: 18px 0 22px
+    }
+
+    .hero h1 em {
+      color: var(--amber);
+      font-style: italic
+    }
+
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 0 28px
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 26px
+    }
+
+    .facts {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .facts b {
+      display: block;
+      color: var(--text);
+      font-size: 20px;
+      font-family: Georgia, serif
+    }
+
+    .booking-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .booking-card h2 {
+      font-size: 22px;
+      margin: 0 0 4px;
+      font-family: Georgia, serif;
+      font-weight: 400
+    }
+
+    .booking-card .sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 18px
+    }
+
+    .field {
+      margin-bottom: 12px
+    }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--amber)
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .chip.active {
+      border-color: var(--amber);
+      background: rgba(227, 182, 74, .12);
+      color: var(--amber)
+    }
+
+    .booking-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin: 10px 0 0;
+      line-height: 1.4
+    }
+
+    .addons-note {
+      font-size: 12px;
+      color: var(--amber);
+      margin: 10px 0 0;
+      line-height: 1.4
+    }
+
+    section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin: 8px 0 0;
+      line-height: 1.05
+    }
+
+    .section-head p {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0
+    }
+
+    .halls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .hall {
+      position: relative;
+      min-height: 300px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .72)),
+        radial-gradient(120% 100% at 20% 10%, #3b3828, #191710 70%);
+    }
+
+    .hall:nth-child(2) {
+      background: linear-gradient(180deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .75)), radial-gradient(120% 100% at 80% 10%, #4a2b25, #18120f 70%)
+    }
+
+    .hall:nth-child(3) {
+      background: linear-gradient(180deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .75)), radial-gradient(120% 100% at 50% 10%, #25343a, #101617 70%)
+    }
+
+    .hall .tag {
+      position: absolute;
+      top: 18px;
+      left: 18px
+    }
+
+    .hall h3 {
+      font-size: 26px;
+      margin: 0 0 6px;
+      font-family: Georgia, serif;
+      font-weight: 400
+    }
+
+    .hall p {
+      margin: 0;
+      font-size: 13px;
+      color: #e3dbc9
+    }
+
+    .hall .hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: start
+    }
+
+    .dish {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .dish:last-child {
+      border-bottom: 0
+    }
+
+    .dish h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 600
+    }
+
+    .dish p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .dish .price {
+      font-family: Georgia, serif;
+      color: var(--amber);
+      white-space: nowrap
+    }
+
+    .menu-aside {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .menu-aside h3 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 24px;
+      margin: 0 0 10px
+    }
+
+    .menu-aside p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 18px
+    }
+
+    .karaoke-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start
+    }
+
+    .queue {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .queue-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px
+    }
+
+    .queue-head h3 {
+      margin: 0;
+      font-size: 18px;
+      font-family: Georgia, serif;
+      font-weight: 400
+    }
+
+    .queue-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .queue-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .queue-list .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: none;
+      background: rgba(227, 182, 74, .14);
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .queue-list .who {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .song-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px
+    }
+
+    .song-form input {
+      flex: 1;
+      padding: 11px 13px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .song-form input:focus {
+      border-color: var(--amber)
+    }
+
+    .phone-mock {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 14px;
+      max-width: 330px;
+      margin: 0 auto;
+      box-shadow: var(--shadow);
+    }
+
+    .phone-screen {
+      background: #100e09;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      min-height: 380px
+    }
+
+    .msg {
+      max-width: 88%;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-bottom: 8px
+    }
+
+    .msg.bot {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-bottom-left-radius: 4px
+    }
+
+    .msg.user {
+      background: rgba(227, 182, 74, .16);
+      border: 1px solid rgba(227, 182, 74, .28);
+      margin-left: auto;
+      border-bottom-right-radius: 4px
+    }
+
+    .msg .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px
+    }
+
+    .msg .btns span {
+      border: 1px solid rgba(227, 182, 74, .4);
+      color: var(--amber);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 11px
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .review {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px
+    }
+
+    .review .stars {
+      color: var(--amber);
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 10px
+    }
+
+    .review p {
+      font-size: 14px;
+      margin: 0 0 14px;
+      color: #e7dfcf
+    }
+
+    .review .src {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px
+    }
+
+    .contact-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start
+    }
+
+    .contact-list .ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      background: rgba(227, 182, 74, .1);
+      border: 1px solid rgba(227, 182, 74, .25);
+      color: var(--amber);
+      font-size: 15px;
+    }
+
+    .contact-list b {
+      display: block;
+      font-size: 14px
+    }
+
+    .contact-list span {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .map-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      min-height: 280px;
+      background:
+        linear-gradient(135deg, rgba(167, 183, 139, .12), transparent 60%),
+        repeating-linear-gradient(0deg, transparent 0 39px, rgba(255, 255, 255, .035) 39px 40px),
+        repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 255, 255, .035) 39px 40px),
+        var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .map-card h3 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 26px;
+      margin: 0 0 8px
+    }
+
+    .map-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: flex
+    }
+
+    .modal {
+      width: min(520px, 100%);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal h3 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 26px;
+      margin: 12px 0 8px
+    }
+
+    .modal p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 18px
+    }
+
+    .summary {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 13px;
+      white-space: pre-wrap;
+      margin-bottom: 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 60;
+      max-width: min(440px, calc(100% - 28px));
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--amber);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: opacity .2s, transform .2s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media(max-width:960px) {
+
+      .hero-grid,
+      .menu-grid,
+      .karaoke-box,
+      .contacts {
+        grid-template-columns: 1fr
+      }
+
+      .halls,
+      .reviews {
+        grid-template-columns: 1fr
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .hero {
+        padding: 46px 0
+      }
+    }
+
+    @media(max-width:520px) {
+      .wrap {
+        width: calc(100% - 28px)
+      }
+
+      .row-2 {
+        grid-template-columns: 1fr
+      }
+
+      .booking-card {
+        padding: 18px
+      }
+
+      .logo-img {
+        width: 48px;
+        height: 48px
+      }
+
+      .logo {
+        font-size: 12px;
+        gap: 8px
+      }
+    }
+
+    @media(max-width:380px) {
+      .logo-text {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <div class="logo"><img class="logo-img" src="los-los-logo.jpg" alt="Лось Лосось — караоке-гастропаб" width="64"
+          height="64"><span class="logo-text">ЛОСЬ ЛОСОСЬ</span></div>
+      <nav class="nav-links">
+        <a href="#halls">Залы</a>
+        <a href="#menu">Меню</a>
+        <a href="#karaoke">Караоке</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a href="#booking" class="btn btn-primary" style="padding:10px 18px;font-size:13px">Забронировать</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="border-top:0">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="demo-badge">Демо-макет · не официальный сайт</span>
+          <h1 class="display">Караоке, которое<br>начинается <em>с брони</em></h1>
+          <p class="lead">Уютный караоке-гастропаб в Дубне.
+            <br>
+            Столики на двоих, караоке-зал, банкеты, юбилеи, дни рождения — без нудных звонков и «а вы точно
+            придёте?».
+            <br>
+            Выберите время, зал и оставьте заявку за пару минут!
+          </p>
+          <div class="hero-actions">
+            <a href="#booking" class="btn btn-primary">Забронировать стол</a>
+            <a href="#menu" class="btn btn-ghost">Смотреть меню</a>
+          </div>
+          <div class="facts">
+            <div><b>4.4/5.0</b>рейтинг на Яндекс Картах</div>
+            <div><b>510</b>оценок гостей</div>
+            <div><b>до 02:00</b>пятница и суббота</div>
+          </div>
+        </div>
+
+        <div class="booking-card" id="booking">
+          <h2>Бронь стола</h2>
+          <p class="sub">Заявка уйдёт администратору — в рабочей версии</p>
+          <form id="bookingForm">
+            <div class="row-2">
+              <div class="field">
+                <label for="date">Дата</label>
+                <input id="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="time">Время</label>
+                <select id="time" required>
+                  <option>18:00</option>
+                  <option>19:00</option>
+                  <option>20:00</option>
+                  <option>21:00</option>
+                  <option>22:00</option>
+                  <option>23:00</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Гостей</label>
+              <div class="chips" id="guests">
+                <span class="chip active" data-v="2">2</span>
+                <span class="chip" data-v="3-4">3–4</span>
+                <span class="chip" data-v="5-6">5–6</span>
+                <span class="chip" data-v="7+">7+</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>Зал</label>
+              <div class="chips" id="zone">
+                <span class="chip active" data-v="Основной зал">Основной</span>
+                <span class="chip" data-v="Караоке-зал">Караоке</span>
+                <span class="chip" data-v="Банкет">Банкет</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="name">Имя</label>
+              <input id="name" type="text" placeholder="Как к вам обращаться" required>
+            </div>
+            <div class="field">
+              <label for="phone">Телефон</label>
+              <input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку</button>
+            <p class="booking-note">Демо: данные никуда не отправляются. В рабочей версии заявка приходит
+              администратору, а гостю — подтверждение.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="halls">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Три сценария вечера</span>
+            <h2 class="display">Выберите, как провести вечер</h2>
+          </div>
+          <p>Здесь будут ваши фото. Пока структура, которая уже продаёт: зал, караоке и банкет разведены по кнопкам.
+          </p>
+        </div>
+        <div class="halls">
+          <article class="hall">
+            <span class="demo-badge tag">Фото зала</span>
+            <h3>Основной зал</h3>
+            <p>Ужин, бизнес-ланч, встречи. Столы у окна и в глубине зала.</p>
+            <div class="hint">Бронь от 2 гостей ·</div>
+          </article>
+          <article class="hall">
+            <span class="demo-badge tag">Фото сцены</span>
+            <h3>Караоке-зал</h3>
+            <p>Своя сцена, микрофоны и очередь песен. Можно снять под день рождения.</p>
+            <div class="hint">Бронь зала · от 6 гостей</div>
+          </article>
+          <article class="hall">
+            <span class="demo-badge tag">Фото банкета</span>
+            <h3>Банкет</h3>
+            <p>Дни рождения, юбилеи, корпоративы. Меню и депозит считаются заранее.</p>
+            <div class="hint">Заявка · расчёт в течение дня</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap menu-grid">
+        <div>
+          <span class="eyebrow">Меню</span>
+          <h2 class="display" style="font-size:clamp(30px,4vw,46px);margin:8px 0 18px">Что заказать под караоке</h2>
+          <div class="dish">
+            <div>
+              <h4>ОБЕД В ЛОСЕ</h4>
+              <p>Фирменный</p>
+            </div>
+            <div class="price">от 470 ₽</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4>Том ям</h4>
+              <p>Острый, с кокосовым молоком</p>
+            </div>
+            <div class="price">от 590 ₽</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4>Стейк из лосося</h4>
+              <p>На гриле, с овощами</p>
+            </div>
+            <div class="price">от 890 ₽</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4>Паста карбонара</h4>
+              <p>Классическая, с гуанчале</p>
+            </div>
+            <div class="price">от 520 ₽</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4>Домашний лимонад</h4>
+              <p>Готовим сами: ягодный, цитрусовый, имбирный</p>
+            </div>
+            <div class="price">от 290 ₽</div>
+          </div>
+          <p class="muted" style="font-size:12px;margin-top:16px">Цены и позиции — просто пример.
+            <br>В рабочей версии меню
+            подставляется из вашего файла и обновляется без помощи программиста.
+          </p>
+        </div>
+        <aside class="menu-aside">
+          <h2>Предзаказ к брони</h2>
+          <p>Гость выбирает блюда заранее - кухня готовит к приходу, а официант не тратит время на приём заказа, а
+            следовательно ваш доход - растёт!</p>
+          <div class="field">
+            <label>Что добавить к брони</label>
+            <div class="chips" id="addons">
+              <span class="chip active" data-v="Стол">Стол</span>
+              <span class="chip" data-v="Караоке-зал">Караоке-зал</span>
+              <span class="chip" data-v="Предзаказ">Предзаказ</span>
+              <span class="chip" data-v="Торт">Торт</span>
+            </div>
+          </div>
+          <button type="button" id="addonsBtn" class="btn btn-primary" style="width:100%;margin-top:8px">Собрать заявку</button>
+          <p class="addons-note" id="addonsNote" hidden></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="karaoke">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Фишка, которой нет у других...</span>
+            <h2 class="display">Очередь песен без бумажек</h2>
+          </div>
+          <p>Гость сканирует QR на столе, выбирает песню — она появляется у ведущего/администратора.
+            <br>Никто не кричит
+            «кто последний?» и все довольны.
+          </p>
+        </div>
+        <div class="karaoke-box">
+          <div class="queue">
+            <div class="queue-head">
+              <h3>Очередь сегодня (МАКЕТ):</h3>
+              <span class="demo-badge">демо</span>
+            </div>
+            <ul class="queue-list" id="queueList">
+              <li><span class="num">1</span> Мираж — Музыка нас связала <span class="who">стол 4</span></li>
+              <li><span class="num">2</span> Zivert — Beverly Hills <span class="who">стол 2</span></li>
+              <li><span class="num">3</span> КИНО — Перемен <span class="who">стол 7</span></li>
+              <li><span class="num">4</span> Abba — Dancing Queen <span class="who">стол 7</span></li>
+            </ul>
+            <form class="song-form" id="songForm">
+              <input id="songInput" type="text" placeholder="Название песни или исполнитель" maxlength="80">
+              <button class="btn btn-primary" type="submit" style="padding:11px 16px">В очередь</button>
+            </form>
+            <p class="booking-note">Демо: позиция считается на странице. <br>В рабочей версии очередь видят гость и
+              ведущий.
+            </p>
+          </div>
+          <div class="phone-mock">
+            <div class="phone-screen">
+              <div class="msg bot">Здравствуйте! Это «Лось Лосось». Хотите забронировать стол или заказать песню?<div
+                  class="btns">
+                  <span>Забронировать стол</span><span>Заказать песню</span><span>Меню</span>
+                </div>
+              </div>
+              <div class="msg user">Стол на субботу, 20:00, 4 человека</div>
+              <div class="msg bot">Есть стол в основном и караоке зале. Куда вас посадить?<div class="btns">
+                  <span>Основной</span><span>Караоке</span>
+                </div>
+              </div>
+              <div class="msg user">Караоке</div>
+              <div class="msg bot">Готово: суббота, 20:00, караоке-зал, 4 гостя. Администратор подтвердит вашу бронь в
+                течение 15
+                минут. Желаете добавить предзаказ блюд?<div class="btns"><span>Да</span><span>Не нужно</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Отзывы</span>
+            <h2 class="display">Что уже говорят наши гости?</h2>
+          </div>
+          <p>Реальные формулировки с Яндекс Карт. <br>В рабочей версии будут обновляться автоматически.</p>
+        </div>
+        <div class="reviews">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Очень хорошая кухня. Зал-караоке уютный, сервировка понравилась. Очень вкусный фирменный салат из
+              морепродуктов».</p>
+            <div class="src">Вера С. · Яндекс Карты</div>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Два небольших зала. Приятная атмосфера. Меню понравилось. Для любителей караоке — второй зал. Отличное
+              место!»</p>
+            <div class="src">Ольга · Яндекс Карты</div>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Проводили здесь ДР, принесли большие вкусные блюда, пиво очень
+              вкусное. Мы сидели компанией 6 человек. Плюсы заведения: музыка - для фанатов рока, металла это
+              место в точку!».</p>
+            <div class="src">Kolash · Яндекс Карты</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="wrap contacts">
+        <div>
+          <span class="eyebrow">Контакты</span>
+          <h2 class="display" style="font-size:clamp(30px,4vw,46px);margin:8px 0 0">Дубна, Свободы 18А</h2>
+          <ul class="contact-list">
+            <li><span class="ico">☏</span>
+              <div><b><a href="tel:+79854433244">+7 (985) 443-32-44</a></b><span>Бронь и вопросы</span></div>
+            </li>
+            <li><span class="ico">◷</span>
+              <div><b>Пн–Чт, Вс 10:00–23:00</b><span>Пт–Сб 10:00–02:00</span></div>
+            </li>
+            <li><span class="ico">◎</span>
+              <div><b>ул. Свободы, 18А</b><span>Дубна, Московская область</span></div>
+            </li>
+            <li><span class="ico">VK</span>
+              <div><b><a href="https://vk.com/club217590622" target="_blank" rel="noopener">Наше сообщество «Лось
+                    Лосось» ВКонтакте</a></b><span>Новости, меню, объявления фото</span></div>
+            </li>
+            <li><span class="ico">▣</span>
+              <div><b>Меню и заказ со стола</b><span>Наведите камеру на QR на столе — откроется меню вашего стола</span></div>
+            </li>
+          </ul>
+        </div>
+        <div class="map-card">
+          <div>
+            <h3>Как добраться?</h3>
+            <p>Здесь можно добавить что-то по вашему желанию, например "Вместительная парковка у входа" / "С нами -
+              вкусно и весело!" / "Посещение с животными - запрещено", можно сделать даже чтобы несколько надписей
+              чередовалось, пока гость на странице - всё ограничивается вашей фантазией!</p>
+          </div>
+          <a class="btn btn-ghost"
+            href="https://yandex.ru/maps/215/dubna/?ll=37.136884%2C56.759331&mode=routes&rtext=~56.759331%2C37.136902&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D174044586481&z=16"
+            target="_blank" rel="noopener">Построить маршрут к нам на Яндекс Картах</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>Демо-макет для «Лось Лосось» · Не официальный сайт · 2026</span>
+      <span>Пример: сайт + QR-меню + бронь + предзаказ + очередь песен</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Это демо-макет. В рабочей версии заявка уходит администратору.</div>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal">
+      <span class="demo-badge">Демо</span>
+      <h3>Заявка сформирована</h3>
+      <p>В рабочей версии она уйдёт администратору, а гостю придёт подтверждение. Вот что увидит
+        администратор:</p>
+      <div class="summary" id="summary"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="copyBtn" type="button">Скопировать текст</button>
+        <button class="btn btn-ghost" id="closeBtn" type="button">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Дата: сегодня или ближайшая доступная
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const iso = d => d.toISOString().slice(0, 10);
+    dateInput.min = iso(today);
+    dateInput.value = iso(today);
+
+    // Чипы
+    function chipGroup(id) {
+      const root = document.getElementById(id);
+      root.addEventListener('click', e => {
+        const chip = e.target.closest('.chip');
+        if (!chip) return;
+        root.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+      return () => root.querySelector('.chip.active')?.dataset.v || '';
+    }
+    const getGuests = chipGroup('guests');
+    const getZone = chipGroup('zone');
+
+    // Добавки к брони: можно выбрать несколько
+    const addonsRoot = document.getElementById('addons');
+    addonsRoot.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      chip.classList.toggle('active');
+    });
+    const getAddons = () => [...addonsRoot.querySelectorAll('.chip.active')].map(c => c.dataset.v);
+
+    // Бронь
+    const modal = document.getElementById('modal');
+    const summary = document.getElementById('summary');
+    document.getElementById('bookingForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = {
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        guests: getGuests(),
+        zone: getZone(),
+        addons: getAddons().join(', ') || 'не выбрано',
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim()
+      };
+      const text = `Бронь: ${data.date} в ${data.time}\nГостей: ${data.guests}\nЗал: ${data.zone}\nК брони: ${data.addons}\nИмя: ${data.name}\nТелефон: ${data.phone}`;
+      summary.textContent = text;
+      modal.classList.add('open');
+    });
+    document.getElementById('closeBtn').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(summary.textContent);
+        document.getElementById('copyBtn').textContent = 'Скопировано';
+        setTimeout(() => document.getElementById('copyBtn').textContent = 'Скопировать текст', 1600);
+      } catch { }
+    });
+
+    // Очередь песен
+    let queueCount = 3;
+    document.getElementById('songForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = document.getElementById('songInput');
+      const song = input.value.trim();
+      if (!song) return;
+      queueCount++;
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="num">${queueCount}</span> ${song.replace(/[<>&]/g, s => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[s]))} <span class="who">вы</span>`;
+      document.getElementById('queueList').appendChild(li);
+      input.value = '';
+    });
+
+    // Пояснения в демо
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
+    }
+
+    document.getElementById('addonsBtn').addEventListener('click', () => {
+      const addons = getAddons();
+      if (!addons.length) {
+        showToast('Выберите, что добавить к брони');
+        return;
+      }
+      const note = document.getElementById('addonsNote');
+      note.hidden = false;
+      note.textContent = `К брони: ${addons.join(', ')}`;
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast(`Добавлено к брони: ${addons.join(', ')}`);
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо-макеты сайтов для малого бизнеса — Дубна</title>
+  <style>
+    :root {
+      --bg: #12100b;
+      --surface: #1b1812;
+      --line: #3a3325;
+      --text: #f7f1e4;
+      --muted: #b8ad9a;
+      --amber: #e3b64a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(80% 60% at 20% 0%, #2a2417 0%, var(--bg) 60%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 64px; }
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--line);
+      color: var(--amber);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 { font-size: clamp(30px, 5vw, 52px); line-height: 1.05; margin: 18px 0 12px; letter-spacing: -.02em; }
+    .lead { color: var(--muted); font-size: 17px; max-width: 680px; margin: 0 0 34px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color .18s, transform .18s;
+    }
+    .card:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .card h2 { margin: 0 0 6px; font-size: 21px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card .go { display: inline-block; margin-top: 16px; color: var(--amber); font-size: 14px; }
+    .note { margin-top: 36px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; }
+    .note b { color: var(--text); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <span class="badge">Демо-макеты</span>
+    <h1>Сайты, которые принимают брони и заказы</h1>
+    <p class="lead">Примеры для кафе, караоке, кальянных и небольших сервисов в Дубне. Бронь без звонка, QR-меню со стола, предзаказ и админка.</p>
+
+    <div class="grid">
+      <a class="card" href="los-los/">
+        <h2>Лось Лосось</h2>
+        <p>Караоке-гастропаб: бронь стола, QR-меню, предзаказ, очередь песен.</p>
+        <span class="go">Открыть демо →</span>
+      </a>
+    </div>
+
+    <p class="note">
+      <b>Это демо-макеты, не официальные сайты заведений.</b> Названия и отзывы использованы как пример.
+      Формы ничего не отправляют. Рабочая версия ставится на российский сервер, домен оформляется на владельца.
+    </p>
+  </main>
+</body>
+</html>
